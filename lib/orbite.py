@@ -8,7 +8,7 @@ GEO_ORBIT_RADIUS = 42164e3 #m
 g = 9.81
 ROTATION_SPEED = 7.292115e-5 #deg.s-1
 c = 2.99792458e8
-epsilon = 1e-10
+epsilon = 1e-40
 
 
 class orbite_eliptique(): 
