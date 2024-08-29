@@ -8,6 +8,8 @@ GEO_ORBIT_RADIUS = 42164e3 #m
 g = 9.81
 ROTATION_SPEED = 7.292115e-5 #deg.s-1
 c = 2.99792458e8
+epsilon = 1e-10
+
 
 class orbite_eliptique(): 
     def __init__(self, apogee, exentricity, inclination, argperigee, raan, device ="cpu" ):
@@ -151,7 +153,7 @@ class orbite_eliptique_batched():
         vec = torch.zeros((len(self.inclination),t.shape[1],3)).to(self.device)
         vec.requires_grad = False 
        
-        vec[:,:,0] = (-torch.sqrt(self.apogee**2-self.b**2) + self.apogee*torch.cos(E_n).T).T
+        vec[:,:,0] = (-torch.sqrt(self.apogee**2-self.b**2+epsilon) + self.apogee*torch.cos(E_n).T).T
         vec[:,:,1] = (self.b*torch.sin(E_n).T).T
  
         return torch.bmm(torch.bmm(torch.bmm(m3,m2),m1),vec.permute(0, 2, 1)).permute(0, 2, 1)

@@ -1,9 +1,12 @@
 import torch 
-import orbite 
-import utils 
 import numpy as np 
-import station
-from translate import  gen_point_proj_operator_batched
+
+
+
+import lib.utils as utils
+import lib.orbite  as orbite
+import lib.station as station
+from lib.translate import  gen_point_proj_operator_batched
 
 
 
