@@ -21,7 +21,7 @@ def decoder_single_img(orb, perspective, view, img_size, device ):
     pos = orb.getPosTensorGeocentred()
 
     pos = torch.cat((pos, torch.ones((pos.shape[:2]), device = torch.device(device))[...,None]), dim=-1)
-    print(pos.shape)
+   
     projection = (perspective@view@(pos[...,None]))[...,0]
 
     rtn = torch.stack((projection[:,:,0]/ projection[:,:,3],projection[:,:,1]/ projection[:,:,3]) , dim = -1)
